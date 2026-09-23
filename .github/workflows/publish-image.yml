@@ -1,0 +1,13 @@
+name: Publish image
+
+on:
+  workflow_dispatch:          # manual: requiere los secrets DOCKERHUB_USERNAME y DOCKERHUB_TOKEN
+
+jobs:
+  build:
+    uses: eduair94/lab-github-actions-t03/.github/workflows/reusable-build.yml@main
+    with:
+      image-name: webapp
+    secrets:
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
