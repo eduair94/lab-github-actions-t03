@@ -46,7 +46,7 @@ jobs:
           aws-region: us-east-1
 
       - name: Deploy a S3 (dev)
-        run: aws s3 sync ./ s3://${{ secrets.S3_BUCKET }} --delete
+        run: aws s3 sync ./ s3://${{ secrets.S3_BUCKET }} --delete --exclude ".git/*"
 
   deploy-staging:
     name: Deploy → staging
@@ -66,7 +66,7 @@ jobs:
           aws-region: us-east-1
 
       - name: Deploy a S3 (staging)
-        run: aws s3 sync ./ s3://${{ secrets.S3_BUCKET }} --delete
+        run: aws s3 sync ./ s3://${{ secrets.S3_BUCKET }} --delete --exclude ".git/*"
 
   deploy-production:
     name: Deploy → production
@@ -86,4 +86,4 @@ jobs:
           aws-region: us-east-1
 
       - name: Deploy a S3 (production)
-        run: aws s3 sync ./ s3://${{ secrets.S3_BUCKET }} --delete
+        run: aws s3 sync ./ s3://${{ secrets.S3_BUCKET }} --delete --exclude ".git/*"
